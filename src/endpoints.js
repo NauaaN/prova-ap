@@ -1,4 +1,4 @@
-import {dobro,somar,temperatura,passou,tabuada} from './services.js'
+import {dobro,somar,temperatura,passou,tabuada, corPrima,ingCinema} from './services.js'
 import { Router } from 'express'
 import { report } from 'process';
 
@@ -85,7 +85,40 @@ server.post('/passou', (req,resp) =>{
 
 })
 
+server.get('/dia2/corprimaria/:cor',(req,resp)=>
+{
+    try{
+    const x= req.params.cor;
 
+    const a= corPrima(x);
+
+    resp.send({
+        cor:a
+    })
+} catch(err){
+    resp.status(404).send({
+        erro: err.message
+    })
+}
+})
+
+server.post('/dia2/ingressocinema', (req,resp)=>{
+    try{
+    const a= req.body.a;
+    const b= req.body.b;
+    const c= req.body.c;
+    const d= req.body.d;
+
+    const resposta= ingCinema(a,b,c,d);
+    resp.send({
+        valor:resposta
+    })
+} catch(err){
+    resp.status(404).send({
+        erro: err.message
+    })
+}
+})
 
 
 export default server;

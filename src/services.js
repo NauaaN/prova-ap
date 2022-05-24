@@ -33,3 +33,30 @@ export function tabuada(numero){
     }
     return tabu;
 }
+
+
+export function corPrima(cor){
+    let resposta= false;
+    if(cor=="amarelo"||cor=="azul"|| cor=="vermelho" ){
+        resposta=true;
+    }
+
+    return resposta;
+}
+
+export function ingCinema(inteira,meia,diasemana,nacionalidade){
+    
+    let ingressosint= inteira*28.5;
+    let ingressosmeia= meia*14.25;
+    let total= ingressosint+ ingressosmeia;
+    if(diasemana== "quarta-feira"){
+        total= total/2;
+    }
+    if(nacionalidade=="brasileira"){
+        ingressosint= inteira*5;
+        ingressosmeia=meia*5;
+        total= ingressosmeia+ingressosint;
+    }
+
+    return total;
+}
