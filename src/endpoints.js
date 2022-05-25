@@ -102,23 +102,21 @@ server.get('/dia2/corprimaria/:cor',(req,resp)=>
 }
 })
 
-server.post('/dia2/ingressocinema', (req,resp)=>{
+server.post('/dia2/ingressosc', (req, resp ) => {
     try{
-    const a= req.body.a;
-    const b= req.body.b;
-    const c= req.body.c;
-    const d= req.body.d;
-
-    const resposta= ingCinema(a,b,c,d);
-    resp.send({
-        valor:resposta
-    })
-} catch(err){
-    resp.status(404).send({
-        erro: err.message
-    })
-}
+        const { qtdInteiras, qtdMeias, diaSemana, nacionalidade} = req.body;
+        const total = ingresso( qtdInteiras, qtdMeias, diaSemana, nacionalidade);
+        resp.send({
+            total : total
+        });
+    }
+    catch(err){
+        resp.send({
+            erro : err.message
+        })
+    }
 })
+
 
 server.post('/dia2/maiorNumero',(req, resp) => {
     try{
