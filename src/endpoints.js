@@ -134,4 +134,19 @@ server.post('/dia2/maiorNumero',(req, resp) => {
 }
 })
 
+server.get('/dia2/freqcaracter/:texto/:caractere', (req, resp) => {
+    try{
+        const { texto, caractere} = req.params;
+        const freq = frequenciaC ( texto, caractere);
+        resp.send({
+            freq : freq
+        })
+    }
+    catch(err) {
+    resp.send({
+        erro: err.message
+    })
+    }
+})
+
 export default server;
