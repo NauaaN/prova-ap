@@ -46,16 +46,16 @@ export function corPrima(cor){
 
 export function ingCinema(inteira,meia,diasemana,nacionalidade){
     
-    let ingressosint= inteira*28.5;
-    let ingressosmeia= meia*14.25;
-    let total= ingressosint+ ingressosmeia;
+    let qntdInteiras= inteira*28.5;
+    let qntdMeias= meia*14.25;
+    let total= qntdInteiras+ qntdMeias;
     if(diasemana== "quarta-feira"){
         total= total/2;
     }
     if(nacionalidade=="brasileira"){
-        ingressosint= inteira*5;
-        ingressosmeia=meia*5;
-        total= ingressosmeia+ingressosint;
+        qntdInteiras= inteira*5;
+        qntdMeias=meia*5;
+        total= qntdMeias+qntdInteiras;
     }
 
     return total;

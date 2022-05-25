@@ -102,21 +102,23 @@ server.get('/dia2/corprimaria/:cor',(req,resp)=>
 }
 })
 
-server.post('/dia2/ingressosc', (req, resp ) => {
+server.post('/dia2/ingressocinema', (req,resp)=>{
     try{
-        const { qtdInteiras, qtdMeias, diaSemana, nacionalidade} = req.body;
-        const total = ingresso( qtdInteiras, qtdMeias, diaSemana, nacionalidade);
-        resp.send({
-            total : total
-        });
-    }
-    catch(err){
-        resp.send({
-            erro : err.message
-        })
-    }
-})
+    const ingressoint= req.body.ingressoint;
+    const ingressomeia= req.body.ingressomeia;
+    const diasemana= req.body.diasemana;
+    const nacionalidade= req.body.nacionalidade;
 
+    const resposta= ingCinema(ingressoint,ingressomeia,diasemana,nacionalidade);
+    resp.send({
+        valor:resposta
+    })
+} catch(err){
+    resp.status(404).send({
+        erro: err.message
+    })
+}
+})
 
 server.post('/dia2/maiorNumero',(req, resp) => {
     try{
@@ -130,21 +132,6 @@ server.post('/dia2/maiorNumero',(req, resp) => {
             erro: err.message
     })
 }
-})
-
-server.get('/dia2/freqcaracter/:texto/:caractere', (req, resp) => {
-    try{
-        const { texto, caractere} = req.params;
-        const freq = frequenciaC ( texto, caractere);
-        resp.send({
-            freq : freq
-        })
-    }
-    catch(err) {
-    resp.send({
-        erro: err.message
-    })
-    }
 })
 
 export default server;
