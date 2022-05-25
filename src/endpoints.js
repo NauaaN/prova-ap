@@ -120,5 +120,18 @@ server.post('/dia2/ingressocinema', (req,resp)=>{
 }
 })
 
+server.post('/dia2/maiorNumero',(req, resp) => {
+    try{
+        const numeros=req.body;
+        const maior = maiorNumero(numeros);
+        resp.send({
+            maior:maior
+        });
+    } catch (err){
+        esp.status(404).send({
+            erro: err.message
+    })
+}
+})
 
 export default server;

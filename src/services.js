@@ -60,3 +60,23 @@ export function ingCinema(inteira,meia,diasemana,nacionalidade){
 
     return total;
 }
+
+export function freqCarac(texto, caractere){
+    let qntd=0;
+    for(let letra of texto){
+        if(letra=caractere)
+        qntd++;
+    }
+
+    return qntd
+}
+
+export function maiorNumero(numeros) {
+    let maior= Number.MIN_VALUE;
+    for(let item of numeros){
+        if(item>maior)
+        maior=item;
+    }
+
+    return maior
+}
